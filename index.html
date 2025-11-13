@@ -48,6 +48,89 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #0c0c0c;
+}
+.menu {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu .toggle {
+  position: relative;
+  height: 60px;
+  width: 60px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: 1.25s;
+  z-index: 5;
+}
+.menu.active .toggle {
+  transform: rotate(360deg);
+  box-shadow:
+    0 6px 8px rgba(0, 0, 0, 0.15),
+    0 0 0 2px #333,
+    0 0 0 8px #fff;
+}
+.menu li {
+  position: absolute;
+  left: 0;
+  list-style: none;
+  transition: 0.5s;
+  transform: rotate(calc(360deg / 8 * var(--i)));
+  transform-origin: 140px;
+  scale: 0;
+  transition-delay: calc(0.05s * var(--i));
+}
+.menu.active li {
+  scale: 1;
+}
+.menu li a {
+  position: relative;
+  display: flex;
+  transform: rotate(calc(360deg / -8 * var(--i)));
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.75rem;
+  color: var(--clr);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+  transition: 0.5s;
+  text-decoration: none;
+}
+.menu li:hover a {
+  font-size: 2.5rem;
+  box-shadow:
+    0 0 0 2px var(--clr),
+    0 0 0 6px #fff;
+}
+  </style>
+  
 </head>
 
 <body class="index-page">
@@ -236,6 +319,22 @@ We believe that every event is more than just a moment, but a space to build tog
                   <a href=""><i class="bi bi-facebook"></i></a>
                   <a href="https://www.instagram.com/denimiftahul097/"><i class="bi bi-instagram"></i></a>
                 </div>
+
+<div class="menu">
+  <div class="toggle">
+    <ion-icon name="share-social"></ion-icon>
+  </div>
+
+  
+  <li style="--i: 1; --clr: #25d366">
+    <a href="https://wa.me/6281998505353" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </li>
+  <li style="--i: 5; --clr: #c32aa3">
+    <a href="https://www.instagram.com/denimiftahul097/" target="_blank"><i class="fab fa-instagram"></i></a>
+  </li>
+  
+</div>
+                
               </div>
               <div class="member-info">
                 <h4>Deni Miftahul</h4>
@@ -450,6 +549,12 @@ We believe that every event is more than just a moment, but a space to build tog
     });
   }
   form.addEventListener("submit", handleSubmit)
+
+  const menu=document.querySelector(".menu");
+const toggle=document.querySelector(".toggle");
+toggle.addEventListener("click",()=>{
+  menu.classList.toggle("active");
+})
 </script>
 
 </body>
